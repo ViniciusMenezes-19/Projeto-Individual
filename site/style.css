@@ -292,16 +292,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
- 
-    .texto-apresentacao span {
-      background-color: #FFD700;
-      color: #000000;
-      font-size: 20px;
-      font-weight: 700;
-      padding: 4px 12px;
-      margin-bottom: 12px;
-    }
+    } 
  
     .texto-apresentacao h1{
       font-size: 30px;
@@ -370,7 +361,7 @@
 
     /* estilização dis cards em gereal */
     .card-momento {
-      width: 60%;
+      width: 70%;
       background-color: #161616;
       border: 1px solid #2a2a2a;
       display: flex;
@@ -447,9 +438,10 @@
     }
  
     .descricaoOcorrido {
-      font-size: 13px;
-      color: #999999;
+      font-size: 17px;
+      color: #d5d5d5;
       line-height: 1.9;
+      font-weight: bolder;
     }
 
     /* Término estilização sequencia dos momentos */ 
@@ -486,3 +478,144 @@
       letter-spacing: 1px;
     }
     /* Término Estilização do versículo que me inspira */
+
+
+    
+    
+    
+    /* Div Pai que contém o formulário de cadastro*/
+    .container-cadastro {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+    }
+ 
+    /* inicio da estilização do meu formulário de cadastro*/
+    .card-formulario {
+      background-color: #161616;
+      border: 1px solid;
+      border-radius: 16px;
+      padding: 40px 48px;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .card-formulario:hover{
+      transform: translateY(-10px);
+      border-color: #FFD700;
+    }
+ 
+    .card-formulario h1 {
+      font-size: 25px;
+      font-weight: bolder;
+      color: #ffffff;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+ 
+    .card-formulario p{
+      font-size: 15px;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+ 
+    /*Inicio de estilização dos campos pessoais de cada usuário*/
+    .grupo-campo {
+      margin-bottom: 30px;
+      background-color: #1f1f1f;
+      height: auto;
+    }
+
+    .grupo-campo span {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+ 
+    .input-campo {
+      width: 100%;
+      background-color: #1f1f1f;
+      border: 1px solid #555555;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      color: #e8e8e8;
+    }
+ 
+    .input-campo::placeholder {
+      color: #ffffff;
+    }
+  /*Término de estilização dos campos pessoais de cada usuário*/
+ 
+    
+  
+  /* === SELECT DE SEXO === */
+    .select-campo {
+      width: 100%;
+      background-color: #1f1f1f;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      color: #e8e8e8;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+ 
+    .select-campo option {
+      background-color: #1f1f1f;
+      color: #e8e8e8;
+    }
+
+ 
+    /* Inicio de estilização botão "Cadastrar" */
+    #botaoCadastro {
+      width: 100%;
+      background-color: #FFD700;
+      color: #000000;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 8px;
+      transition: background-color 0.2s;
+      cursor: pointer;
+    }
+ 
+    #botaoCadastro:hover {
+      background-color: #c9a800;
+    }
+    /* Termino de estilização botão "Cadastrar" */
+
+
+ 
+    /* Íniciod e estlização "Fazer login" */
+    .link-login {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 20px;
+      color: #ffffff;
+    }
+ 
+    .link-login a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: 600;
+    }
+ 
+    .link-login a:hover {
+      text-decoration: underline;
+    }
+    /* Término de estlização "Fazer login" */
+
+
+    /* ínicio de estilização da minha "Página de cadastro"*/
