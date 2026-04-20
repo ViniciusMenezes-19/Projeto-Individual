@@ -618,7 +618,7 @@
     /* Término de estlização "Fazer login" */
 
     #mensagem_erro{
-      color: white;
+      color: #FFD700;
       margin-top: 15px;
       text-align: center;
     }

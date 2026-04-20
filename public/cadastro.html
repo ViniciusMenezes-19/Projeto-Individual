@@ -6,7 +6,7 @@
     <title>Servindo Vidas</title>
     <link
       rel="shortcut icon"
-      href="../imagens/logo site.png"
+      href="imagens/logo site.png"
       type="image/x-icon"
     />
 
@@ -19,7 +19,7 @@
       <nav class="navbar">
         <div class="container-cabecalho">
           <div class="logo">
-            <img src="../imagens/logo-nav.png" alt="Logo Jornada de Fé" />
+            <img src="./imagens/logo-nav.png" alt="Logo Jornada de Fé" />
             <span class="titulo-logo"
               ><a href="index.html">Jornada de Fé</a></span
             >
@@ -27,8 +27,8 @@
           <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="sobreMim.html">Sobre Mim</a></li>
-            <li><a href="sobreMim.html">Cadastrar</a></li>
-            <li class="btn-login"><a href="#">Login</a></li>
+            <li><a href="cadastro.html">Cadastrar</a></li>
+            <li class="btn-login"><a href="login.html">Login</a></li>
           </ul>
         </div>
       </nav>
@@ -106,6 +106,16 @@
         <div id="mensagem_erro"></div>
       </div>
     </div>
+    <div id="linha-separadora"></div>
+
+    <!--Ínicio do meu rodapé-->
+    <footer>
+      <div class="rodape">
+        <p>© 2026 SPTECH | Vinícius Menezes - Projeto individual. Todos os direitos reservados</p>
+      </div>
+    </footer>
+    <!--Término do meu Rodapé-->
+
   </body>
 </html>
 
@@ -146,7 +156,7 @@
           mensagem_erro.innerHTML =
           "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
           setTimeout(() => {
-          window.location = "login.html";
+          window.location = "dashboard/dashboard.html";
           }, "2000");
         } else {
           
