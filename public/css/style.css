@@ -617,5 +617,11 @@
     }
     /* Término de estlização "Fazer login" */
 
+    #mensagem_erro{
+      color: white;
+      margin-top: 15px;
+      text-align: center;
+    }
 
-    /* ínicio de estilização da minha "Página de cadastro"*/
+
+    /* Termino de estilização da minha "Página de cadastro"*/
