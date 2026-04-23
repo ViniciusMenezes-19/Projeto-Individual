@@ -39,23 +39,11 @@
     <!-- Inicio do conteudo de cadastro-->
     <div class="container-cadastro">
       <div class="card-formulario">
-        <h1>Crie sua conta</h1>
-        <p>Preencha os campos abaixo para se cadastrar</p>
+        <h1>Entre na sua conta</h1>
+        <p>Preencha os campos abaixo para entrar</p>
         <!-- Termino do conteudo de cadastro-->
 
         <!-- Inicio dos dados pessoais de cada usuario -->
-
-        <!--Inicio do registro "nome"-->
-        <div class="grupo-campo">
-          <span>NOME COMPLETO</span>
-          <input
-            class="input-campo"
-            type="text"
-            id="input_nome"
-            placeholder="Digite seu nome completo"
-          />
-        </div>
-        <!--Termino do registro "nome"-->
 
 
         <!--Inicio do registro "email"-->
@@ -77,19 +65,19 @@
             class="input-campo"
             type="password"
             id="input_senha"
-            placeholder="Crie sua senha"
+            placeholder="Digite sua senha"
           />
         </div>
         <!--Termino do registro "Senha"-->
 
         <!-- BOTÃO -->
-        <button id="botaoCadastro" onclick="cadastrar()">
-          AVANÇAR
+        <button id="botaoCadastro" onclick="entrar()">
+          ENTRAR
         </button>
 
         <!-- Inicio "já possui uma conta" -->
         <div class="link-login">
-          <span>Já tem uma conta?</span> <a href="#">Faça login</a>
+          <span>Ainda não tem uma conta?</span> <a href="cadastro.html">Cadastrar</a>
         </div>
         <div id="mensagem_erro"></div>
       </div>
@@ -107,3 +95,47 @@
 
   </body>
 </html>
+
+<script>
+
+  function entrar(){
+  let email = input_email.value;
+  let senha = input_senha.value;
+
+  if(email == `` || senha == ``){
+    mensagem_erro.innerHTML = `Por favor preencha todos os campos!`
+  }
+  else if(!email.includes(`@`)){
+    mensagem_erro.innerHTML = `Por favor insira um email válido com "@"`
+  }
+  else {
+      fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          emailServer: email,
+          senhaServer: senha,
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            mensagem_erro.innerHTML =
+              "Cadastro realizado com sucesso! Redirecionando para tela de dash...";
+            setTimeout(() => {
+              window.location = "/dashboard/dashboard.html";
+            }, "2000");
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+    }
+  
+}
+</script>
