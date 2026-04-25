@@ -124,12 +124,13 @@
 
           if (resposta.ok) {
             mensagem_erro.innerHTML =
-              "Cadastro realizado com sucesso! Redirecionando para tela de dash...";
+              "login realizado com sucesso! Redirecionando para tela de perfil do usuário";
             setTimeout(() => {
-              window.location = "/dashboard/dashboard.html";
+              window.location = "/Seu_perfil.html";
             }, "2000");
           } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
+             mensagem_erro.innerHTML = `Reveja suas credenciais de acesso!`
+            throw "Houve um erro ao tentar realizar o cadastro, Reveja suas credencias de acesso";
           }
         })
         .catch(function (resposta) {
