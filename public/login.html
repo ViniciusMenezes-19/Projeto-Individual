@@ -54,6 +54,7 @@
             type="email"
             id="input_email"
             placeholder="Digite seu e-mail"
+            value="Trajanomenezes@yuny.com"
           />
         </div>
         <!--Termino do registro "email"-->
@@ -66,6 +67,7 @@
             type="password"
             id="input_senha"
             placeholder="Digite sua senha"
+            value="123456!@"
           />
         </div>
         <!--Termino do registro "Senha"-->
@@ -123,6 +125,13 @@
           console.log("resposta: ", resposta);
 
           if (resposta.ok) {
+            resposta.json().then(json=>{
+              
+              sessionStorage.SENHA_USUARIO = json.senha;
+              sessionStorage.NOME_USUARIO =  json.nome;
+              sessionStorage.EMAIL_USUARIO = json.email;
+              
+            })
             mensagem_erro.innerHTML =
               "login realizado com sucesso! Redirecionando para tela de perfil do usuário";
             setTimeout(() => {

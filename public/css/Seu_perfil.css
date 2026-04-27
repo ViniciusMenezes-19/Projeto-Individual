@@ -16,7 +16,7 @@ body {
 
 /* Barra lateral esquerda */
 .janela {
-  width: 16%;
+  width: 20%;
   height: 100vh;
   background-color: black; 
   display: flex;
@@ -30,15 +30,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* distribui espaço igual entre os itens */
-  width: 100%;
-  padding: 0 0 40px 0; /* espaço no final antes do botão sair */
-  gap: 20px; /* espaço igual entre todos os itens */
+  justify-content: space-between; 
+  padding: 0 0 40px 0; 
+  gap: 8px; 
+}
+
+.navbar h1{
+  text-align: center;
+  margin-top: 0px;
+  font-size: 20px;
 }
 
 /* Botões do menu */
 .btn-nav, .btn-logout {
-  width: 100px;
+  width: 110px;
   margin: 20px 0;
   background-color: #000000;
   border-radius: 8px;
