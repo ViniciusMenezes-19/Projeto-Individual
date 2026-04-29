@@ -32,7 +32,7 @@ body {
   align-items: center;
   justify-content: space-between; 
   padding: 0 0 40px 0; 
-  gap: 20px; 
+  gap: 80px; 
 }
 
 .navbar h1{
@@ -122,4 +122,89 @@ body {
 .conteudo h1{
     color: #ffd700;
     font-size: 100px;
+}
+
+.conteudo {
+  width: 85%;
+  height: 100vh;
+  background-color: #000;
+  background-size: cover;
+  padding: 40px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.8);
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center
+}
+
+.form-container:hover{
+    transform: translateY(-10px);
+    border: 1px solid #ffd700;
+}
+
+.form-container label {
+  align-items: center;
+  font-size: 1.1em;
+  color: #f0e6d2;
+  margin-bottom: 5px;
+}
+
+.form-container input {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f0e6d2;
+  font-size: 1em;
+  color: #2a1f00;
+  margin-left: 20px;
+}
+
+.form-container button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffd700;
+  color: #000000;
+  font-weight: bolder;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #c9a800;
+  color: #2a1f00;
+}
+
+.mensagem-erro {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.mensagem-erro.erro {
+  background-color: #7a1f1f;
+  color: #f0e6d2;
+  box-shadow: 0 0 8px #5a0000;
+}
+
+.mensagem-erro.sucesso {
+  background-color: #2e7d32;
+  color: #ffffff;
+  box-shadow: 0 0 8px #1b5e20;
 }
