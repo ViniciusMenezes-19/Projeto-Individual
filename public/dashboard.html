@@ -42,32 +42,30 @@
         <!-- KPIs -->
         <div class="kpis">
           <div class="kpi">
-            <h4>Maior Pontuação — História do Autor</h4>
-            <span id="kpi-pontuacao-autor">9/10</span>
+            <h4>Maior Pontuação: — História do Autor</h4>
+            <span id="kpi-pontuacao-autor" style="color: green;">9/10</span>
           </div>
           <div class="kpi">
             <h4>Menor Tempo — Sobre o Autor</h4>
-            <span id="kpi-menor-tempo-autor">2 min</span>
+            <span id="kpi-menor-tempo-autor" style="color: blue;">2 min</span>
           </div>
           <div class="kpi">
             <h4>Maior Tempo — Sobre o Autor</h4>
-            <span id="kpi-tempo-autor">4 min</span>
+            <span id="kpi-tempo-autor" style="color: red;">4 min</span>
           </div>
           <div class="kpi">
             <h4>Maior Pontuação — Sobre o Batismo</h4>
-            <span id="kpi-pontuacao-batismo">8/10</span>
+            <span id="kpi-pontuacao-batismo" style="color: green;">8/10</span>
           </div>
           <div class="kpi">
             <h4>Menor Tempo — Sobre o Batismo</h4>
-            <span id="kpi-tempo-batismo">1 min</span>
+            <span id="kpi-tempo-batismo" style="color: blue;">1 min</span>
           </div>
           <div class="kpi">
             <h4>Maior Tempo — Sobre o Batismo</h4>
-            <span id="kpi-maior-tempo-batismo">3 min</span>
+            <span id="kpi-maior-tempo-batismo" style="color: red;">3 min</span>
           </div>
         </div>
-
-        <br /><br />
 
         <!-- titulos centralizados -->
         <div class="titulo">
@@ -76,7 +74,7 @@
 
         <!-- dash -->
         <div class="grafico">
-          <div style="width: 60%">
+          <div style="width: 90%">
             <canvas id="graficoPontuacoes"></canvas>
           </div>
         </div>
@@ -89,8 +87,8 @@
       type: "bar",
       data: {
         labels: [
-          "Maior Pontuação\nHistória do Autor",
-          "Maior Pontuação\nSobre o Batismo",
+          "Maior Pontuação:\n'História do Autor'",
+          "Maior Pontuação:\n'Sobre o Batismo'",
           "Maior Tempo\nSobre o Autor",
           "Menor Tempo\nSobre o Autor",
           "Maior Tempo\nSobre o Batismo",
@@ -98,15 +96,17 @@
         ],
         datasets: [
           {
-            data: [9, 8, 4, 1, 2, 3],
+            data: [9, 8, 4, 8, 2, 3],
             backgroundColor: [
-              "rgba(255, 215, 0, 0.7)",
-              "rgba(255, 215, 0, 0.7)",
-              "rgba(255, 255, 255, 0.2)",
-              "rgba(255, 255, 255, 0.2)",
+              "green",
+              "blue",
+              "red",
+              "green",
+              "blue",
+              "red",
             ],
-            borderColor: ["#FFD700", "#FFD700", "#ffffff", "#ffffff"],
-            borderWidth: 1,
+            borderColor: ["#ffffff", "#ffffff", "#ffffff", "#ffffff"],
+            borderWidth: 2,
             borderRadius: 4,
           },
         ],
@@ -119,8 +119,8 @@
         scales: {
           x: {
             ticks: {
-              color: "#aaaaaa",
-              font: { size: 10 },
+              color: "#ffff",
+              font: { size: 10.2 },
             },
             grid: { color: "rgba(255,255,255,0.05)" },
           },
