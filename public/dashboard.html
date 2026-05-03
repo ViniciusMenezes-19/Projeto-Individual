@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jornada de Fé | Dashboard</title>
+    <link rel="icon" href="imagens/logo site.png" />
+    <script src="./js/sessao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./css/dashboard.css" />
+  </head>
+
+  <body>
+    <div class="pagina">
+      <!-- navbar -->
+      <div class="janela">
+        <div class="navbar">
+          <h1>
+            Olá, <br /><span id="b_usuario" style="color: #c9a800"></span>
+          </h1>
+          <div class="btn-nav">
+            <a href="#"><h3>Quiz</h3></a>
+          </div>
+          <div class="btn-nav">
+            <a href="./dashboard/dashboard.html"
+              ><h3 style="padding: 5px">Progresso</h3></a
+            >
+          </div>
+          <div class="btn-nav">
+            <a href="./dashboard/Mudar_perfil.html"><h3>Mudar perfil</h3></a>
+          </div>
+          <div class="btn-logout" onclick="limparSessao()">
+            <h3><a href="login.html">Sair</a></h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- lado direito da nav -->
+      <div class="conteudo-direita">
+        <h2>Dashboard</h2>
+
+        <!-- KPIs -->
+        <div class="kpis">
+          <div class="kpi">
+            <h4>Maior Pontuação — História do Autor</h4>
+            <span id="kpi-pontuacao-autor">9/10</span>
+          </div>
+          <div class="kpi">
+            <h4>Menor Tempo — Sobre o Autor</h4>
+            <span id="kpi-menor-tempo-autor">2 min</span>
+          </div>
+          <div class="kpi">
+            <h4>Maior Tempo — Sobre o Autor</h4>
+            <span id="kpi-tempo-autor">4 min</span>
+          </div>
+          <div class="kpi">
+            <h4>Maior Pontuação — Sobre o Batismo</h4>
+            <span id="kpi-pontuacao-batismo">8/10</span>
+          </div>
+          <div class="kpi">
+            <h4>Menor Tempo — Sobre o Batismo</h4>
+            <span id="kpi-tempo-batismo">1 min</span>
+          </div>
+          <div class="kpi">
+            <h4>Maior Tempo — Sobre o Batismo</h4>
+            <span id="kpi-maior-tempo-batismo">3 min</span>
+          </div>
+        </div>
+
+        <br /><br />
+
+        <!-- titulos centralizados -->
+        <div class="titulo">
+          <h2>Pontuações por tentativa:</h2>
+        </div>
+
+        <!-- dash -->
+        <div class="grafico">
+          <div style="width: 60%">
+            <canvas id="graficoPontuacoes"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    new Chart(document.getElementById("graficoPontuacoes"), {
+      type: "bar",
+      data: {
+        labels: [
+          "Maior Pontuação\nHistória do Autor",
+          "Maior Pontuação\nSobre o Batismo",
+          "Maior Tempo\nSobre o Autor",
+          "Menor Tempo\nSobre o Autor",
+          "Maior Tempo\nSobre o Batismo",
+          "Menor Tempo\nSobre o Batismo",
+        ],
+        datasets: [
+          {
+            data: [9, 8, 4, 1, 2, 3],
+            backgroundColor: [
+              "rgba(255, 215, 0, 0.7)",
+              "rgba(255, 215, 0, 0.7)",
+              "rgba(255, 255, 255, 0.2)",
+              "rgba(255, 255, 255, 0.2)",
+            ],
+            borderColor: ["#FFD700", "#FFD700", "#ffffff", "#ffffff"],
+            borderWidth: 1,
+            borderRadius: 4,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: "#aaaaaa",
+              font: { size: 10 },
+            },
+            grid: { color: "rgba(255,255,255,0.05)" },
+          },
+          y: {
+            ticks: { color: "#aaaaaa" },
+            grid: { color: "rgba(255,255,255,0.05)" },
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+  </script>
+</html>
