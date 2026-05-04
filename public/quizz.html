@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jornada de fé | Editar Perfil</title>
-    <link rel="stylesheet" href="./css/Seu_perfil.css" />
+    <title>Jornada de fé | Quizz</title>
+    <link rel="stylesheet" href="./css/quizz.css" />
     <link rel="icon" href="imagens/logo site.png" />
     <script src="./js/sessao.js"></script>
   </head>
@@ -17,7 +17,7 @@
         <div class="navbar">
           <h1>Olá, <br /><span id="b_usuario" style="color: #c9a800;"></span></h1>
           <div class="btn-nav">
-            <a href="quizz.html"><h3>Quiz</h3></a>
+            <a href="#"><h3>Quiz</h3></a>
           </div>
           <div class="btn-nav">
             <a href="./dashboard.html"><h3 style="padding: 5px;">Progresso</h3></a>
@@ -33,7 +33,19 @@
 
       <!-- Conteúdo ao lado da navbar -->
       <div class="conteudo">
-        <h1>Uma jornada de Fé</h1>
+      <div class="telaSelecao" id="tela-selecao">
+        <h1>Escolha o Quiz</h1>
+        <p style="margin-bottom: 100px;">Selecione um dos quizzes abaixo para começar: </p>
+        <div class="opcoesDeQuiz">
+          <div class="cardQuiz" onclick="iniciarQuiz1()">
+            <h3>Sobre o Autor</h3>
+            <p>10 perguntas sobre o autor</p>
+          </div>
+          <div class="cardQuiz" onclick="iniciarQuiz2()">
+            <h3>Sobre o Batismo</h3>
+            <p>10 perguntas sobre o batismo e seu significado</p>
+          </div>
+        </div>
     </div>
     </div>
   </body>

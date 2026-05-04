@@ -1,0 +1,173 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-size: cover;
+  color: #f0e6d2;
+  overflow: hidden;
+}
+
+/* Layout geral */
+.pagina {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Barra lateral esquerda */
+.janela {
+  width: 20%;
+  height: 100vh;
+  background-color: black; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  box-shadow: 3px 0 8px rgba(0,0,0,0.7);
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; 
+  padding: 0 0 40px 0; 
+  gap: 20px; 
+}
+
+.navbar h1{
+  text-align: center;
+  margin-top: 0px;
+  font-size: 20px;
+}
+
+/* Botões do menu */
+.btn-nav, .btn-logout {
+  width: 110px;
+  margin: 20px 0;
+  background-color: #000000;
+  border-radius: 8px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+.btn-nav a {
+  display: block;
+  padding: 12px 0;
+  color: #f0e6d2;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+.btn-nav:hover {
+  background-color: #ffd700;
+  box-shadow: 0 0 10px #d8b886;
+}
+
+.btn-nav:hover a {
+  color: #2a1f00;
+}
+
+/* Botão sair */
+.btn-logout {
+  background-color: #ff0000;
+  color: #f0e6d2;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 12px 0;
+  border-radius: 8px;
+  box-shadow: 1px 1px 8px #5a0000;
+  user-select: none;
+  margin-top: auto;
+  width: 100px;
+}
+
+.btn-logout h3 a{
+    text-decoration: none;
+    color: white;
+}
+
+.btn-logout:hover {
+  background-color: #d44444;
+  box-shadow: 0 0 12px #ff8080;
+  color: #fff;
+}
+
+
+/* Logo no topo */
+.Titulo {
+  background-size: cover;
+  height: 70px;
+  width: 200px;
+}
+
+/* Conteúdo ao lado da navbar */
+.conteudo {
+  width: 85%;
+  height: 100vh;
+  background-image: linear-gradient(to right, black, rgb(66, 66, 66));
+  padding: 40px;
+  color: #f0e6d2;
+  text-shadow: 1px 1px 2px #000;
+  display: flex;
+  border-left: 2px solid white;
+  align-items: center;
+  justify-content: center;
+}
+
+/* selecionador do quiz*/
+
+.telaSelecao {
+      text-align: center;
+    }
+ 
+.telaSelecao h1 {
+  font-size: 44px;
+  font-weight: 700;
+  color: #FFD700;
+}
+
+.telaSelecao p {
+  color: #ffffff;
+  font-size: 17px;
+  margin-bottom: 40px;
+}
+
+.opcoesDeQuiz {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.cardQuiz {
+  background-color: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 36px 40px;
+  width: 220px;
+  cursor: pointer;
+  transition: border-color 1s;
+}
+
+.cardQuiz:hover {
+  border-color: #FFD700;
+  transform: translateY(-15px);
+  
+}
+
+.cardQuiz h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFD700;
+  margin-bottom: 8px;
+}
+
+.cardQuiz p {
+  font-size: 17px;
+  color: #777777;
+}
