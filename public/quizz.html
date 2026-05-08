@@ -5,22 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jornada de fé | Quizz</title>
-    <link rel="stylesheet" href="./css/quizz.css" />
     <link rel="icon" href="imagens/logo site.png" />
     <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="css/quizz.css" />
   </head>
 
-  <body onload="validarSessao()">
+  <body
+    onload="
+      validarSessao();
+      onloadEsconder();
+    "
+  >
     <div class="pagina">
-      <!-- Navbar lateral -->
+      <!-- SIDEBAR -->
       <div class="janela">
         <div class="navbar">
-          <h1>Olá, <br /><span id="b_usuario" style="color: #c9a800;"></span></h1>
+          <h1>
+            Olá, <br /><span id="b_usuario" style="color: #c9a800"></span>
+          </h1>
           <div class="btn-nav">
             <a href="#"><h3>Quiz</h3></a>
           </div>
           <div class="btn-nav">
-            <a href="./dashboard.html"><h3 style="padding: 5px;">Progresso</h3></a>
+            <a href="./dashboard.html"
+              ><h3 style="padding: 5px">Progresso</h3></a
+            >
           </div>
           <div class="btn-nav">
             <a href="./dashboard/Mudar_perfil.html"><h3>Editar perfil</h3></a>
@@ -31,22 +40,531 @@
         </div>
       </div>
 
-      <!-- Conteúdo ao lado da navbar -->
+      <!-- CONTEÚDO -->
       <div class="conteudo">
-      <div class="telaSelecao" id="tela-selecao">
-        <h1>Escolha o Quiz</h1>
-        <p style="margin-bottom: 100px;">Selecione um dos quizzes abaixo para começar: </p>
-        <div class="opcoesDeQuiz">
-          <div class="cardQuiz" onclick="iniciarQuiz(0)">
-            <h3>Sobre o Autor</h3>
-            <p>10 perguntas sobre o autor</p>
-          </div>
-          <div class="cardQuiz" onclick="iniciarQuiz(1)">
-            <h3>Sobre o Batismo</h3>
-            <p>10 perguntas sobre o batismo e seu significado</p>
+        <!-- TELA DE SELEÇÃO -->
+        <div class="telaSelecao" id="tela-selecao">
+          <h1>Escolha o Quiz</h1>
+          <p style="margin-bottom: 100px">
+            Selecione um dos quizzes abaixo para começar:
+          </p>
+          <div class="opcoesDeQuiz">
+            <div class="cardQuiz" onclick="iniciarQuiz(0)">
+              <h3>Sobre o Autor</h3>
+              <p>10 perguntas sobre o autor</p>
+            </div>
+            <div class="cardQuiz" onclick="iniciarQuiz(1)">
+              <h3>Sobre o Batismo</h3>
+              <p>10 perguntas sobre o batismo e seu significado</p>
+            </div>
           </div>
         </div>
+
+        <!-- TELA DO JOGO -->
+        <div id="pontuacaoEJogo">
+          <div
+            id="pontuacao"
+            class="flex-colunar width-fit-content border-primary"
+            style="display: none"
+          >
+            <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
+              <span class="width-fit-content"
+                >Quantidade de acertos: <span id="spanCertas"></span
+              ></span>
+              <span class="width-fit-content"
+                >Quantidade de erros: <span id="spanErradas"></span
+              ></span>
+            </div>
+            <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
+              <span id="pontuacaoFinal" class="width-fit-content"
+                >Pontuação Final: <span id="spanPontuacaoFinal">***</span></span
+              >
+              <span id="msgFinal" class="width-fit-content">***</span>
+            </div>
+          </div>
+
+          <div
+            id="jogo"
+            class="width-fit-content flex-colunar border-secondary"
+            style="display: none"
+          >
+            <div id="infoQuestao" class="padding-8">
+              <span
+                >Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de
+                <span id="qtdQuestoes"></span> questões.</span
+              >
+            </div>
+            <div id="perguntaDaQuestaoAtual" class="padding-8">
+              <span id="spanQuestaoExibida" class="text-bold"></span>
+            </div>
+            <div id="infoAlternativas" class="padding-8">
+              <span><em>Escolha uma opção dentre as abaixo:</em></span>
+            </div>
+
+            <div id="opcoes" class="flex-colunar padding-8">
+              <span>
+                <input
+                  type="radio"
+                  id="primeiraOpcao"
+                  name="option"
+                  class="radio"
+                  value="alternativaA"
+                />
+                <label
+                  for="primeiraOpcao"
+                  class="option"
+                  id="labelOpcaoUm"
+                ></label>
+              </span>
+              <span>
+                <input
+                  type="radio"
+                  id="segundaOpcao"
+                  name="option"
+                  class="radio"
+                  value="alternativaB"
+                />
+                <label
+                  for="segundaOpcao"
+                  class="option"
+                  id="labelOpcaoDois"
+                ></label>
+              </span>
+              <span>
+                <input
+                  type="radio"
+                  id="terceiraOpcao"
+                  name="option"
+                  class="radio"
+                  value="alternativaC"
+                />
+                <label
+                  for="terceiraOpcao"
+                  class="option"
+                  id="labelOpcaoTres"
+                ></label>
+              </span>
+              <span>
+                <input
+                  type="radio"
+                  id="quartaOpcao"
+                  name="option"
+                  class="radio"
+                  value="alternativaD"
+                />
+                <label
+                  for="quartaOpcao"
+                  class="option"
+                  id="labelOpcaoQuatro"
+                ></label>
+              </span>
+            </div>
+            <div id="botoes" class="flex-colunar padding-8">
+              <button onclick="submeter()" id="btnSubmeter">
+                Submeter resposta
+              </button>
+              <button onclick="avancar()" id="btnProx" disabled>
+                Avançar para próxima questão
+              </button>
+              <button
+                onclick="tentarNovamente()"
+                id="btnTentarNovamente"
+                disabled
+              >
+                Tentar novamente
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
+
+    <script>
+      const perguntasAutor = [
+        {
+          pergunta: "Qual é a função atual de Vinícius na Lírio Igreja?",
+          alternativaA: "Pastor auxiliar",
+          alternativaB: "Membro e servo do voluntariado",
+          alternativaC: "Líder do louvor",
+          alternativaD: "Administrador",
+          alternativaCorreta: "alternativaB",
+        },
+        {
+          pergunta:
+            "Em 2022, o pai de Vinícius foi diagnosticado com qual enfermidade?",
+          alternativaA: "Leucemia",
+          alternativaB: "Linfoma de Hodgkin",
+          alternativaC: "Câncer de pulmão",
+          alternativaD: "Anemia crônica",
+          alternativaCorreta: "alternativaB",
+        },
+        {
+          pergunta:
+            "Qual era o sentimento de Vinícius enquanto seu pai fazia quimioterapia?",
+          alternativaA: "Alívio",
+          alternativaB: "Solidão e um vazio enorme",
+          alternativaC: "Indiferença",
+          alternativaD: "Entusiasmo",
+          alternativaCorreta: "alternativaB",
+        },
+        {
+          pergunta:
+            "O que despertou a curiosidade de Vinícius para visitar a Lírio Igreja?",
+          alternativaA: "Uma promessa de cura",
+          alternativaB: "A paixão com que as pessoas falavam do lugar",
+          alternativaC: "A proximidade da sua casa",
+          alternativaD: "Os amigos da balada",
+          alternativaCorreta: "alternativaB",
+        },
+        {
+          pergunta:
+            "Quem convidou Vinícius para visitar a igreja em janeiro de 2023?",
+          alternativaA: "O pastor",
+          alternativaB: "Amigos de infância",
+          alternativaC: "Sua namorada e a família dela",
+          alternativaD: "Sua mãe",
+          alternativaCorreta: "alternativaC",
+        },
+        {
+          pergunta:
+            "Qual foi a reação inicial de Vinícius ao receber o primeiro convite?",
+          alternativaA: "Aceitou na hora",
+          alternativaB: "Ele recusou o primeiro convite",
+          alternativaC: "Pediu um tempo para pensar",
+          alternativaD: "Ficou com raiva",
+          alternativaCorreta: "alternativaB",
+        },
+        {
+          pergunta: "Em qual mês e ano ocorreu o batismo de Vinícius?",
+          alternativaA: "Janeiro de 2023",
+          alternativaB: "Agosto de 2022",
+          alternativaC: "Julho de 2023",
+          alternativaD: "Dezembro de 2021",
+          alternativaCorreta: "alternativaC",
+        },
+        {
+          pergunta:
+            "Que sentimento Vinícius afirma ter deixado para trás após o batismo?",
+          alternativaA: "A vontade de viajar",
+          alternativaB: "A raiva, a explosão e o vazio",
+          alternativaC: "O desejo de ser médico",
+          alternativaD: "O medo de hospitais",
+          alternativaCorreta: "alternativaB",
+        },
+        {
+          pergunta: "Em qual área do voluntariado Vinícius serve hoje (2026)?",
+          alternativaA: "Estacionamento",
+          alternativaB: "Sonoplastia",
+          alternativaC: "Área 'Bem-vindo'",
+          alternativaD: "Escola Infantil",
+          alternativaCorreta: "alternativaC",
+        },
+        {
+          pergunta: "Como o serviço na igreja ajudou Vinícius pessoalmente?",
+          alternativaA:
+            "Ajudou a desenvolver a comunicação e perder a vergonha",
+          alternativaB: "Ensinou fotografia",
+          alternativaC: "Ensinou música",
+          alternativaD: "Deu um novo emprego",
+          alternativaCorreta: "alternativaA",
+        },
+      ];
+
+      const perguntasBatismo = [
+        {
+          pergunta:
+            "De acordo com o texto, com quem o batismo no cristianismo começa de forma mais clara?",
+          alternativaA: "Jesus Cristo",
+          alternativaB: "João Batista",
+          alternativaC: "Os Apóstolos",
+          alternativaD: "Mateus",
+          alternativaCorreta: "alternativaB",
+        },
+        {
+          pergunta:
+            "Qual era o sinal externo do batismo pregado por João Batista no deserto?",
+          alternativaA: "Unção com óleo",
+          alternativaB: "Imposição de mãos",
+          alternativaC: "Batismo com água",
+          alternativaD: "Entrega de ofertas",
+          alternativaCorreta: "alternativaC",
+        },
+        {
+          pergunta:
+            "Por que Jesus Cristo escolheu ser batizado no Rio Jordão, mesmo sem ter pecados?",
+          alternativaA: "Para se purificar de erros passados",
+          alternativaB: "Para cumprir uma lei de João Batista",
+          alternativaC:
+            "Para dar exemplo à população e marcar o início de sua missão",
+          alternativaD: "Para se tornar um voluntário",
+          alternativaCorreta: "alternativaC",
+        },
+        {
+          pergunta:
+            "Qual era a idade aproximada de Jesus quando ele foi batizado?",
+          alternativaA: "12 anos",
+          alternativaB: "20 anos",
+          alternativaC: "30 anos",
+          alternativaD: "33 anos",
+          alternativaCorreta: "alternativaC",
+        },
+        {
+          pergunta:
+            "Segundo o texto, qual atividade é mencionada como sendo tão importante quanto o batismo?",
+          alternativaA: "O jejum",
+          alternativaB: "O voluntariado",
+          alternativaC: "A leitura bíblica diária",
+          alternativaD: "A peregrinação",
+          alternativaCorreta: "alternativaB",
+        },
+        {
+          pergunta:
+            "No versículo de Mateus 28:19, em nome de quem as nações devem ser batizadas?",
+          alternativaA: "Apenas em nome de Jesus",
+          alternativaB: "Em nome de João Batista",
+          alternativaC: "Em nome do Pai, do Filho e do Espírito Santo",
+          alternativaD: "Em nome da Igreja",
+          alternativaCorreta: "alternativaC",
+        },
+        {
+          pergunta:
+            "O texto afirma que o batismo funciona como um simbolismo de quê?",
+          alternativaA: "Um banho relaxante",
+          alternativaB: "Um 'Sepultamento' seguido de um 'Renascimento'",
+          alternativaC: "Uma regra rígida social",
+          alternativaD: "Um evento apenas para crianças",
+          alternativaCorreta: "alternativaB",
+        },
+        {
+          pergunta:
+            "Por que muitas igrejas não batizam crianças pequenas, segundo o texto?",
+          alternativaA: "Por falta de espaço",
+          alternativaB: "Porque crianças não podem mergulhar",
+          alternativaC:
+            "Porque o batismo exige arrependimento, e a criança é considerada pura",
+          alternativaD: "Porque elas não podem ser voluntárias",
+          alternativaCorreta: "alternativaC",
+        },
+        {
+          pergunta:
+            "O que a pessoa deve estar disposta a fazer ao decidir se batizar?",
+          alternativaA: "Mudar, deixar hábitos e vícios passados",
+          alternativaB: "Decorar toda a Bíblia",
+          alternativaC: "Pagar uma taxa",
+          alternativaD: "Mudar-se para o deserto",
+          alternativaCorreta: "alternativaA",
+        },
+        {
+          pergunta:
+            "Complete: 'negue-se a si mesmo, e tome cada dia a sua ___, e siga-me.'",
+          alternativaA: "Vida",
+          alternativaB: "Bíblia",
+          alternativaC: "Cruz",
+          alternativaD: "Missão",
+          alternativaCorreta: "alternativaC",
+        },
+      ];
+
+      let listaAtiva = [];
+      let numeroDaQuestaoAtual = 0;
+      let pontuacaoFinal = 0;
+      let tentativaIncorreta = 0;
+      let certas = 0;
+      let erradas = 0;
+      let quantidadeDeQuestoes = 0;
+
+      function onloadEsconder() {
+        document.getElementById("pontuacao").style.display = "none";
+        document.getElementById("jogo").style.display = "none";
+        document.getElementById("pontuacaoEJogo").style.display = "none";
+      }
+
+      function iniciarQuiz(indice) {
+        listaAtiva = indice === 0 ? perguntasAutor : perguntasBatismo;
+        numeroDaQuestaoAtual = 0;
+        pontuacaoFinal = 0;
+        tentativaIncorreta = 0;
+        certas = 0;
+        erradas = 0;
+        quantidadeDeQuestoes = listaAtiva.length;
+
+        document.getElementById("tela-selecao").style.display = "none";
+        document.getElementById("pontuacaoEJogo").style.display = "block";
+        document.getElementById("pontuacao").style.display = "none";
+        document.getElementById("jogo").style.display = "flex";
+        document.getElementById("qtdQuestoes").innerHTML = quantidadeDeQuestoes;
+
+        preencherHTMLcomQuestaoAtual(0);
+
+        btnSubmeter.disabled = false;
+        btnProx.disabled = true;
+        btnTentarNovamente.disabled = true;
+      }
+
+      function preencherHTMLcomQuestaoAtual(index) {
+        habilitarAlternativas(true);
+        const questaoAtual = listaAtiva[index];
+        numeroDaQuestaoAtual = index;
+        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML =
+          Number(index) + 1;
+        document.getElementById("spanQuestaoExibida").innerHTML =
+          questaoAtual.pergunta;
+        document.getElementById("labelOpcaoUm").innerHTML =
+          questaoAtual.alternativaA;
+        document.getElementById("labelOpcaoDois").innerHTML =
+          questaoAtual.alternativaB;
+        document.getElementById("labelOpcaoTres").innerHTML =
+          questaoAtual.alternativaC;
+        document.getElementById("labelOpcaoQuatro").innerHTML =
+          questaoAtual.alternativaD;
+      }
+
+      function submeter() {
+        const options = document.getElementsByName("option");
+        let hasChecked = false;
+        for (let i = 0; i < options.length; i++) {
+          if (options[i].checked) {
+            hasChecked = true;
+            break;
+          }
+        }
+        if (!hasChecked) {
+          alert("Não há alternativas escolhidas. Escolha uma opção.");
+        } else {
+          btnSubmeter.disabled = true;
+          btnProx.disabled = false;
+          habilitarAlternativas(false);
+          checarResposta();
+        }
+      }
+
+      function habilitarAlternativas(trueOrFalse) {
+        let opcaoEscolhida = trueOrFalse ? false : true;
+
+        primeiraOpcao.disabled = opcaoEscolhida;
+        segundaOpcao.disabled = opcaoEscolhida;
+        terceiraOpcao.disabled = opcaoEscolhida;
+        quartaOpcao.disabled = opcaoEscolhida;
+      }
+
+      function avancar() {
+        btnProx.disabled = true;
+        btnSubmeter.disabled = false;
+        desmarcarRadioButtons();
+        if (numeroDaQuestaoAtual < listaAtiva.length - 1) {
+          preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual);
+        } else if (numeroDaQuestaoAtual == listaAtiva.length - 1) {
+          alert("Atenção... a próxima é a última questão!");
+          preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual);
+        } else {
+          finalizarJogo();
+        }
+        limparCoresBackgroundOpcoes();
+      }
+
+      function tentarNovamente() {
+        window.location.reload();
+      }
+
+      function checarResposta() {
+        const questaoAtual = listaAtiva[numeroDaQuestaoAtual];
+        const respostaQuestaoAtual = questaoAtual.alternativaCorreta;
+        const options = document.getElementsByName("option");
+        let alternativaCorreta = null;
+
+        options.forEach((option) => {
+          if (option.value === respostaQuestaoAtual) {
+            alternativaCorreta = option.labels[0].id;
+          }
+        });
+
+        options.forEach((option) => {
+          if (
+            option.checked === true &&
+            option.value === respostaQuestaoAtual
+          ) {
+            document
+              .getElementById(alternativaCorreta)
+              .classList.add("text-success-with-bg");
+            pontuacaoFinal++;
+            certas++;
+            document.getElementById("spanCertas").innerHTML = certas;
+            numeroDaQuestaoAtual++;
+          } else if (option.checked && option.value !== respostaQuestaoAtual) {
+            const wrongLabelId = option.labels[0].id;
+            document
+              .getElementById(wrongLabelId)
+              .classList.add("text-danger-with-bg");
+            document
+              .getElementById(alternativaCorreta)
+              .classList.add("text-success-with-bg");
+            tentativaIncorreta++;
+            erradas++;
+            document.getElementById("spanErradas").innerHTML = erradas;
+            numeroDaQuestaoAtual++;
+          }
+        });
+      }
+
+      function limparCoresBackgroundOpcoes() {
+        const options = document.getElementsByName("option");
+        options.forEach((option) => {
+          document
+            .getElementById(option.labels[0].id)
+            .classList.remove("text-danger-with-bg");
+          document
+            .getElementById(option.labels[0].id)
+            .classList.remove("text-success-with-bg");
+        });
+      }
+
+      function desmarcarRadioButtons() {
+        const options = document.getElementsByName("option");
+        for (let i = 0; i < options.length; i++) {
+          options[i].checked = false;
+        }
+      }
+
+      function finalizarJogo() {
+        document.getElementById("pontuacao").style.display = "flex";
+         document.getElementById("spanErradas").style.color = "red";
+         document.getElementById("spanCertas").style.color = "green";
+        document.getElementById("jogo").style.display = "none";
+        let textoParaMensagemFinal = null;
+        let classComCoresParaMensagemFinal = null;
+        const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes;
+
+        if (porcentagemFinalDeAcertos <= 0.3) {
+          textoParaMensagemFinal = "Parece que você não leu toda a página!";
+          classComCoresParaMensagemFinal = "text-danger-with-bg";
+        } else if (
+          porcentagemFinalDeAcertos > 0.3 &&
+          porcentagemFinalDeAcertos < 0.9
+        ) {
+          textoParaMensagemFinal = "Está no caminho, mas dá para melhorar!";
+          classComCoresParaMensagemFinal = "text-warning-with-bg";
+        } else if (porcentagemFinalDeAcertos >= 0.9) {
+          textoParaMensagemFinal =
+            "Mandou muito bem! já pode se batizar e ser um voluntário!";
+          classComCoresParaMensagemFinal = "text-success-with-bg";
+        }
+
+        textoParaMensagemFinal +=
+          "<br> Você acertou " +
+          Math.round(porcentagemFinalDeAcertos * 100) +
+          "% das questões.";
+
+        document.getElementById("msgFinal").innerHTML = textoParaMensagemFinal;
+        document
+          .getElementById("msgFinal")
+          .classList.add(classComCoresParaMensagemFinal);
+        document.getElementById("spanPontuacaoFinal").innerHTML =
+          pontuacaoFinal;
+        document.getElementById("jogo").classList.add("text-new-gray");
+
+        btnProx.disabled = true;
+        btnSubmeter.disabled = true;
+      }
+    </script>
   </body>
 </html>

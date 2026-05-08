@@ -2,54 +2,52 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-size: cover;
+  background-color: #0d0d0d;
   color: #f0e6d2;
   overflow: hidden;
 }
 
-/* Layout geral */
 .pagina {
   display: flex;
   height: 100vh;
   width: 100vw;
 }
 
-/* Barra lateral esquerda */
+/* css do meno lateral*/
 .janela {
   width: 20%;
   height: 100vh;
-  background-color: black; 
+  background-color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 40px;
-  box-shadow: 3px 0 8px rgba(0,0,0,0.7);
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.7);
 }
 
 .navbar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; 
-  padding: 0 0 40px 0; 
-  gap: 20px; 
+  padding: 0 0 40px 0;
+  gap: 20px;
 }
 
-.navbar h1{
+.navbar h1 {
   text-align: center;
   margin-top: 0px;
   font-size: 20px;
 }
 
-/* Botões do menu */
-.btn-nav, .btn-logout {
+.btn-nav,
+.btn-logout {
   width: 110px;
   margin: 20px 0;
   background-color: #000000;
   border-radius: 8px;
   text-align: center;
   transition: background-color 0.3s ease;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
 }
 
 .btn-nav a {
@@ -72,7 +70,6 @@ body {
   color: #2a1f00;
 }
 
-/* Botão sair */
 .btn-logout {
   background-color: #ff0000;
   color: #f0e6d2;
@@ -86,49 +83,37 @@ body {
   width: 100px;
 }
 
-.btn-logout h3 a{
-    text-decoration: none;
-    color: white;
+.btn-logout h3 a {
+  text-decoration: none;
+  color: white;
 }
 
 .btn-logout:hover {
   background-color: #d44444;
   box-shadow: 0 0 12px #ff8080;
-  color: #fff;
 }
 
-
-/* Logo no topo */
-.Titulo {
-  background-size: cover;
-  height: 70px;
-  width: 200px;
-}
-
-/* Conteúdo ao lado da navbar */
 .conteudo {
   width: 85%;
   height: 100vh;
   background-image: linear-gradient(to right, black, rgb(66, 66, 66));
   padding: 40px;
-  color: #f0e6d2;
-  text-shadow: 1px 1px 2px #000;
-  display: flex;
   border-left: 2px solid white;
+  display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
 }
 
-/* selecionador do quiz*/
-
+/* css da escolha do quiz */
 .telaSelecao {
-      text-align: center;
-    }
- 
+  text-align: center;
+}
+
 .telaSelecao h1 {
   font-size: 44px;
   font-weight: 700;
-  color: #FFD700;
+  color: #ffd700;
 }
 
 .telaSelecao p {
@@ -155,19 +140,86 @@ body {
 }
 
 .cardQuiz:hover {
-  border-color: #FFD700;
+  border-color: #ffd700;
   transform: translateY(-15px);
-  
 }
 
 .cardQuiz h3 {
   font-size: 24px;
   font-weight: 700;
-  color: #FFD700;
+  color: #ffd700;
   margin-bottom: 8px;
 }
 
 .cardQuiz p {
   font-size: 17px;
   color: #777777;
+}
+
+/*Css das questoões e pontuação */
+#pontuacaoEJogo {
+  color: #f0e6d2;
+}
+
+.flex-colunar {
+  display: flex;
+  flex-direction: column;
+}
+.width-fit-content {
+  width: fit-content;
+
+}
+.padding-8 {
+  padding: 8px;
+}
+.border-primary {
+  border: 1px solid #ffd700;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.border-secondary {
+  border: 1px solid #f0e6d2;
+  border-radius: 4px;
+}
+.text-bold {
+  font-weight: bold;
+}
+
+.text-success-with-bg {
+  color: #4caf50;
+  font-weight: bold;
+}
+.text-danger-with-bg {
+  color: #f44336;
+  font-weight: bold;
+}
+.text-warning-with-bg {
+  color: #ffd700;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.text-new-gray {
+  opacity: 0.4;
+}
+
+.radio {
+  margin-right: 6px;
+  accent-color: #ffd700;
+}
+.option {
+  cursor: pointer;
+}
+
+#botoes button {
+  display: block;
+  margin-top: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  background-color: #ffd700;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  color: #000;
 }
