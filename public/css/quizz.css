@@ -188,10 +188,12 @@ body {
 .text-success-with-bg {
   color: #4caf50;
   font-weight: bold;
+  margin-top: 20px;
 }
 .text-danger-with-bg {
   color: #f44336;
   font-weight: bold;
+  margin-top: 20px;
 }
 .text-warning-with-bg {
   color: #ffd700;

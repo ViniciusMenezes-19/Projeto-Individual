@@ -527,8 +527,8 @@
 
       function finalizarJogo() {
         document.getElementById("pontuacao").style.display = "flex";
-         document.getElementById("spanErradas").style.color = "red";
-         document.getElementById("spanCertas").style.color = "green";
+        document.getElementById("spanErradas").style.color = "red";
+        document.getElementById("spanCertas").style.color = "green";
         document.getElementById("jogo").style.display = "none";
         let textoParaMensagemFinal = null;
         let classComCoresParaMensagemFinal = null;
@@ -564,6 +564,33 @@
 
         btnProx.disabled = true;
         btnSubmeter.disabled = true;
+
+        var idUsuario = sessionStorage.ID_USUARIO;
+        var nomeQuiz = listaAtiva === perguntasAutor ? "autor" : "batismo";
+
+        fetch("/tentativas/registrar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fk_usuarioServer: idUsuario,
+            quizServer: nomeQuiz,
+            pontuacaoServer: pontuacaoFinal,
+            acertosServer: certas,
+            errosServer: erradas,
+            totalServer: quantidadeDeQuestoes,
+          }),
+        })
+          .then(function (resposta) {
+            return resposta.json();
+          })
+          .then(function (resultado) {
+            console.log("Tentativa registrada com sucesso!", resultado);
+          })
+          .catch(function (erro) {
+            console.log("Erro ao registrar tentativa:", erro);
+          });
       }
     </script>
   </body>
