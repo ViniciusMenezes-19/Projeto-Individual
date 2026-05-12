@@ -38,9 +38,28 @@
                 <label>Senha:
                 <input type="password" placeholder="Digite sua nova senha" id="senha_input"></label>
                 <button onclick="atualizarPerfil()">SALVAR ALTERAÇÕES</button>
-                <div id="mensagem_erro" class="mensagem-erro" style="display: none;"></div>
+                <div id="mensagem_erro" class="mensagem_final" style="display: none;"></div>
         </div>
     </div>
     </div>
   </body>
 </html>
+
+<script>
+  function atualizarPerfil(){
+    let novoNome = nome_input.value;
+    let novaSenha = senha_input.value;
+    let novoEmail = email_input.value 
+
+    if(novoNome == `` || novaSenha == `` || novoEmail == ``){
+      mensagem_erro.innerHTML = `Por favor preencha todos os campos!`
+      document.getElementById('mensagem_erro').style.display = "flex";
+    }
+    else{
+      mensagem_erro.innerHTML = `Informações salvas com sucesso!`
+      document.getElementById('mensagem_erro').style.display = "flex";
+      document.getElementById('mensagem_erro').style.color = "green";
+
+    }
+  }
+</script>
