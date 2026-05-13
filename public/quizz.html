@@ -17,7 +17,6 @@
     "
   >
     <div class="pagina">
-      <!-- SIDEBAR -->
       <div class="janela">
         <div class="navbar">
           <h1>
@@ -40,27 +39,25 @@
         </div>
       </div>
 
-      <!-- CONTEÚDO -->
       <div class="conteudo">
-        <!-- TELA DE SELEÇÃO -->
         <div class="telaSelecao" id="tela-selecao">
           <h1>Escolha o Quiz</h1>
           <p style="margin-bottom: 100px">
             Selecione um dos quizzes abaixo para começar:
           </p>
           <div class="opcoesDeQuiz">
-            <div class="cardQuiz" onclick="iniciarQuiz(0)">
+            <div class="cardQuiz" onclick="iniciarQuiz1()">
               <h3>Sobre o Autor</h3>
               <p>10 perguntas sobre o autor</p>
             </div>
-            <div class="cardQuiz" onclick="iniciarQuiz(1)">
+
+            <div class="cardQuiz" onclick="iniciarQuiz2()">
               <h3>Sobre o Batismo</h3>
               <p>10 perguntas sobre o batismo e seu significado</p>
             </div>
           </div>
         </div>
 
-        <!-- TELA DO JOGO -->
         <div id="pontuacaoEJogo">
           <div
             id="pontuacao"
@@ -100,7 +97,6 @@
             <div id="infoAlternativas" class="padding-8">
               <span><em>Escolha uma opção dentre as abaixo:</em></span>
             </div>
-
             <div id="opcoes" class="flex-colunar padding-8">
               <span>
                 <input
@@ -189,6 +185,7 @@
           alternativaD: "Administrador",
           alternativaCorreta: "alternativaB",
         },
+
         {
           pergunta:
             "Em 2022, o pai de Vinícius foi diagnosticado com qual enfermidade?",
@@ -198,6 +195,7 @@
           alternativaD: "Anemia crônica",
           alternativaCorreta: "alternativaB",
         },
+
         {
           pergunta:
             "Qual era o sentimento de Vinícius enquanto seu pai fazia quimioterapia?",
@@ -207,6 +205,7 @@
           alternativaD: "Entusiasmo",
           alternativaCorreta: "alternativaB",
         },
+
         {
           pergunta:
             "O que despertou a curiosidade de Vinícius para visitar a Lírio Igreja?",
@@ -216,6 +215,7 @@
           alternativaD: "Os amigos da balada",
           alternativaCorreta: "alternativaB",
         },
+
         {
           pergunta:
             "Quem convidou Vinícius para visitar a igreja em janeiro de 2023?",
@@ -225,6 +225,7 @@
           alternativaD: "Sua mãe",
           alternativaCorreta: "alternativaC",
         },
+
         {
           pergunta:
             "Qual foi a reação inicial de Vinícius ao receber o primeiro convite?",
@@ -234,6 +235,7 @@
           alternativaD: "Ficou com raiva",
           alternativaCorreta: "alternativaB",
         },
+
         {
           pergunta: "Em qual mês e ano ocorreu o batismo de Vinícius?",
           alternativaA: "Janeiro de 2023",
@@ -242,6 +244,7 @@
           alternativaD: "Dezembro de 2021",
           alternativaCorreta: "alternativaC",
         },
+
         {
           pergunta:
             "Que sentimento Vinícius afirma ter deixado para trás após o batismo?",
@@ -251,6 +254,7 @@
           alternativaD: "O medo de hospitais",
           alternativaCorreta: "alternativaB",
         },
+
         {
           pergunta: "Em qual área do voluntariado Vinícius serve hoje (2026)?",
           alternativaA: "Estacionamento",
@@ -259,6 +263,7 @@
           alternativaD: "Escola Infantil",
           alternativaCorreta: "alternativaC",
         },
+
         {
           pergunta: "Como o serviço na igreja ajudou Vinícius pessoalmente?",
           alternativaA:
@@ -366,6 +371,7 @@
       ];
 
       let listaAtiva = [];
+      let nomeQuizAtivo = "";
       let numeroDaQuestaoAtual = 0;
       let pontuacaoFinal = 0;
       let tentativaIncorreta = 0;
@@ -379,8 +385,19 @@
         document.getElementById("pontuacaoEJogo").style.display = "none";
       }
 
-      function iniciarQuiz(indice) {
-        listaAtiva = indice === 0 ? perguntasAutor : perguntasBatismo;
+      function iniciarQuiz1() {
+        listaAtiva = perguntasAutor;
+        nomeQuizAtivo = "autor";
+        prepararJogo();
+      }
+
+      function iniciarQuiz2() {
+        listaAtiva = perguntasBatismo;
+        nomeQuizAtivo = "batismo";
+        prepararJogo();
+      }
+
+      function prepararJogo() {
         numeroDaQuestaoAtual = 0;
         pontuacaoFinal = 0;
         tentativaIncorreta = 0;
@@ -395,7 +412,6 @@
         document.getElementById("qtdQuestoes").innerHTML = quantidadeDeQuestoes;
 
         preencherHTMLcomQuestaoAtual(0);
-
         btnSubmeter.disabled = false;
         btnProx.disabled = true;
         btnTentarNovamente.disabled = true;
@@ -440,7 +456,6 @@
 
       function habilitarAlternativas(trueOrFalse) {
         let opcaoEscolhida = trueOrFalse ? false : true;
-
         primeiraOpcao.disabled = opcaoEscolhida;
         segundaOpcao.disabled = opcaoEscolhida;
         terceiraOpcao.disabled = opcaoEscolhida;
@@ -530,6 +545,7 @@
         document.getElementById("spanErradas").style.color = "red";
         document.getElementById("spanCertas").style.color = "green";
         document.getElementById("jogo").style.display = "none";
+
         let textoParaMensagemFinal = null;
         let classComCoresParaMensagemFinal = null;
         const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes;
@@ -565,17 +581,14 @@
         btnProx.disabled = true;
         btnSubmeter.disabled = true;
 
-        var idUsuario = sessionStorage.ID_USUARIO;
-        var nomeQuiz = listaAtiva === perguntasAutor ? "autor" : "batismo";
-
         fetch("/tentativas/registrar", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            fk_usuarioServer: idUsuario,
-            quizServer: nomeQuiz,
+            fk_usuarioServer: sessionStorage.ID_USUARIO,
+            quizServer: nomeQuizAtivo,
             pontuacaoServer: pontuacaoFinal,
             acertosServer: certas,
             errosServer: erradas,
@@ -583,7 +596,13 @@
           }),
         })
           .then(function (resposta) {
-            return resposta.json();
+            if (resposta.ok) {
+              return resposta.json();
+            } else {
+              return resposta.text().then(function (texto) {
+                throw texto;
+              });
+            }
           })
           .then(function (resultado) {
             console.log("Tentativa registrada com sucesso!", resultado);
