@@ -1,12 +1,12 @@
 var tentativaModel = require("../models/tentativaModel"); 
 
 function registrar(req, res) {
-    var fk_usuario = req.body.fk_usuarioServer;
-    var quiz = req.body.quizServer;
-    var pontuacao = req.body.pontuacaoServer;
-    var acertos = req.body.acertosServer;
-    var erros = req.body.errosServer;
-    var total = req.body.totalServer;
+    let fk_usuario = req.body.fk_usuarioServer;
+    let quiz = req.body.quizServer;
+    let pontuacao = req.body.pontuacaoServer;
+    let acertos = req.body.acertosServer;
+    let erros = req.body.errosServer;
+    let total = req.body.totalServer;
 
     if (fk_usuario == undefined) {
         res.status(400).send("O id do usuário está undefined!");
