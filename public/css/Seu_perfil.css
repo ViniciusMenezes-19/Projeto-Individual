@@ -7,14 +7,13 @@ body {
   overflow: hidden;
 }
 
-/* Layout geral */
+
 .pagina {
   display: flex;
   height: 100vh;
   width: 100vw;
 }
 
-/* Barra lateral esquerda */
 .janela {
   width: 20%;
   height: 100vh;
@@ -41,7 +40,6 @@ body {
   font-size: 20px;
 }
 
-/* Botões do menu */
 .btn-nav, .btn-logout {
   width: 110px;
   margin: 20px 0;
@@ -72,7 +70,6 @@ body {
   color: #2a1f00;
 }
 
-/* Botão sair */
 .btn-logout {
   background-color: #ff0000;
   color: #f0e6d2;
@@ -98,14 +95,13 @@ body {
 }
 
 
-/* Logo no topo */
 .Titulo {
   background-size: cover;
   height: 70px;
   width: 200px;
 }
 
-/* Conteúdo ao lado da navbar */
+
 .conteudo {
   width: 85%;
   height: 100vh;

@@ -1,5 +1,3 @@
-/* Estilização da minha header/Menu de navegação */
-
 * {
   margin: 0;
   padding: 0;
@@ -55,7 +53,7 @@ body {
   color: #ffd700;
 }
 
-/* Menu de Navegação */
+
 .nav-links {
   display: flex;
   list-style: none;
@@ -91,9 +89,6 @@ body {
   border: 2px solid #ffd700;
 }
 
-/* Término de Estilização da minha header/Menu de navegação */
-
-/* Ínicio de estilização do banner */
 .main {
   width: 100%;
   background-color: #000;
@@ -117,9 +112,6 @@ body {
   border-radius: 40px;
 }
 
-/* Término de estilização do banner */
-
-/* Ínicio de estilização "O que é o Batismo"*/
 
 .main2 {
   width: 100%;
@@ -173,7 +165,7 @@ body {
   color: #444;
 }
 
-/* ÍNicio de estilização Como surgiu o bastimo*/
+
 #titulo-main2 {
   margin-top: 80px;
 }
@@ -196,9 +188,7 @@ body {
   font-size: 21px;
 }
 
-/* Término de estilização Como surgiu o bastimo*/
 
-/* Ínicio de estilização "Quais os Pré requisitos do batismo"*/
 #titulo-main3 {
   margin-top: 80px;
 }
@@ -221,9 +211,7 @@ body {
   font-size: 21px;
 }
 
-/* Término de estilização "Quais os Pré requisitos do batismo"*/
 
-/* Ínicio de estilização do meu rodapé*/
 footer {
   width: 100%;
   height: 100px;
@@ -240,15 +228,11 @@ footer {
   font-weight: bolder;
 }
 
-/* Término de estilização do meu rodapé*/
-
-/*  Ínicio de estlização da página "SobreMim" */
 
 .sobreMim {
   background-color: #000;
 }
 
-/* Ínicio da estilização "Descrição Breve" */
 
 .secao-apresentacao {
   max-width: 960px;
@@ -295,16 +279,13 @@ footer {
   color: #ffffff;
   line-height: 1.8;
 }
-/* Término da estilização "Descrição Breve"*/
 
-/* Linha para separar minha apresentação das fotos */
 #linha-separadora {
   width: 100%;
   height: 2px;
   background-color: #ffffff;
 }
 
-/* inicio da estilização "Momentos" */
 .tituloMomentos {
   text-align: center;
   padding: 48px 40px 16px;
@@ -324,9 +305,7 @@ footer {
   font-size: 24px;
   font-weight: 700;
 }
-/* inicio da estilização "Momentos"*/
 
-/* inicio estilização sequencia dos momentos */
 .lista-de-momentos {
   padding: 24px 40px 48px;
   display: flex;
@@ -334,7 +313,7 @@ footer {
   gap: 28px;
 }
 
-/* estilização dis cards em gereal */
+
 .card-momento {
   width: 70%;
   background-color: #161616;
@@ -348,7 +327,7 @@ footer {
   transform: translateY(-10px);
 }
 
-/* estilização dos cards da esquerda */
+
 .card-momento.lado-esquerdo {
   align-self: flex-start;
   border-radius: 0 16px 16px 0;
@@ -356,7 +335,6 @@ footer {
 }
 
 
-/* estilização dos cards da direita */
 .card-momento.lado-direito {
   align-self: flex-end;
   border-radius: 16px 0 0 16px;
@@ -365,7 +343,6 @@ footer {
 }
 
 
-/* Estlização geral dos fotos dentro dos cards*/
 .fotoMomento {
   width: 500px;
   flex-shrink: 0;
@@ -381,7 +358,7 @@ footer {
   object-fit: cover;
 }
 
-/* Conteúdo de texto geral dos cards */
+
 .conteudoEcrito {
   padding: 36px 40px;
   flex: 1;
@@ -414,9 +391,6 @@ footer {
   font-weight: bolder;
 }
 
-/* Término estilização sequencia dos momentos */
-
-/* Inicio Estilização do versículo que me inspira */
 .versiculoFinal {
   max-width: 800px;
   margin: 0 auto 64px;
@@ -446,9 +420,7 @@ footer {
   font-weight: bold;
   letter-spacing: 1px;
 }
-/* Término Estilização do versículo que me inspira */
 
-/* Div Pai que contém o formulário de cadastro*/
 .container-cadastro {
   display: flex;
   justify-content: center;
@@ -456,7 +428,7 @@ footer {
   padding: 60px 20px;
 }
 
-/* inicio da estilização do meu formulário de cadastro*/
+
 .card-formulario {
   background-color: #161616;
   border: 1px solid;
@@ -486,7 +458,7 @@ footer {
   margin-bottom: 40px;
 }
 
-/*Inicio de estilização dos campos pessoais de cada usuário*/
+
 .grupo-campo {
   margin-bottom: 30px;
   background-color: #1f1f1f;
@@ -516,11 +488,10 @@ footer {
 .input-campo::placeholder {
   color: #ffffff;
 }
-/*Término de estilização dos campos pessoais de cada usuário*/
 
 
 
-/* Inicio de estilização botão "Cadastrar" */
+
 #botaoCadastro {
   width: 100%;
   background-color: #ffd700;
@@ -537,9 +508,9 @@ footer {
 #botaoCadastro:hover {
   background-color: #c9a800;
 }
-/* Termino de estilização botão "Cadastrar" */
 
-/* Íniciod e estlização "Fazer login" */
+
+
 .link-login {
   text-align: center;
   margin-top: 24px;
@@ -556,7 +527,7 @@ footer {
 .link-login a:hover {
   text-decoration: underline;
 }
-/* Término de estlização "Fazer login" */
+
 
 #mensagem_erro {
   color: #ffd700;
@@ -564,4 +535,4 @@ footer {
   text-align: center;
 }
 
-/* Termino de estilização da minha "Página de cadastro"*/
+
