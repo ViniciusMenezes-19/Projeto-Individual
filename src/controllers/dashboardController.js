@@ -1,7 +1,7 @@
-var dashboardModel = require("../models/dashboardModel");
+let dashboardModel = require("../models/dashboardModel");
  
 function buscarDadosDashboard(req, res) {
-    var fk_usuario = req.params.fk_usuario;
+    let fk_usuario = req.params.fk_usuario;
  
     console.log("Buscando dados da dashboard para o usuário:", fk_usuario);
  

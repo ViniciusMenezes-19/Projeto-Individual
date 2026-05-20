@@ -10,7 +10,12 @@
     <link rel="stylesheet" href="./css/dashboard.css" />
   </head>
 
-  <body onload="validarSessao()">
+  <body
+    onload="
+      validarSessao();
+      carregarDashboard();
+    "
+  >
     <div class="pagina">
       <div class="janela">
         <div class="navbar">
@@ -29,41 +34,42 @@
         </div>
       </div>
 
-
       <div class="conteudo-direita">
-        <h2>Dashboard</h2>
+        <h2>Métricas</h2>
+
         <div class="kpis">
           <div class="kpi">
             <h4>Maior Pontuação Sobre: "História do Autor"</h4>
-            <span id="kpi-pontuacao-autor" style="color: green;">9/10</span>
-          </div>
-          <div class="kpi">
-            <h4>Melhor Tempo Sobre: "O Autor"</h4>
-            <span id="kpi-menor-tempo-autor" style="color: blue;">2 min</span>
+            <span id="kpi-pontuacao-autor" style="color: blue"
+              >carregando...</span
+            >
           </div>
           <div class="kpi">
             <h4>Menor Pontuação Sobre: "História do Autor"</h4>
-            <span id="kpi-tempo-autor" style="color: red;">4 min</span>
+            <span id="kpi-menor-pontuacao-autor" style="color: yellow"
+              >carregando...</span
+            >
           </div>
           <div class="kpi">
             <h4>Maior Pontuação Sobre: "O Batismo"</h4>
-            <span id="kpi-pontuacao-batismo" style="color: green;">8/10</span>
+            <span id="kpi-pontuacao-batismo" style="color: green"
+              >carregando...</span
+            >
           </div>
           <div class="kpi">
-            <h4>Melhor Tempo Sobre: "O Batismo"</h4>
-            <span id="kpi-tempo-batismo" style="color: blue;">1 min</span>
-          </div>
-          <div class="kpi">
-            <h4>Menor Pontuação Sobre:: "O Batismo"</h4>
-            <span id="kpi-maior-tempo-batismo" style="color: red;">3 min</span>
+            <h4>Menor Pontuação Sobre: "O Batismo"</h4>
+            <span id="kpi-menor-pontuacao-batismo" style="color: red"
+              >carregando...</span
+            >
           </div>
         </div>
+
+        <br /><br />
 
         <div class="titulo">
           <h2>Detalhes da tentativa:</h2>
         </div>
 
-        <!-- dash -->
         <div class="grafico">
           <div style="width: 90%">
             <canvas id="graficoPontuacoes"></canvas>
@@ -74,54 +80,102 @@
   </body>
 
   <script>
-    new Chart(document.getElementById("graficoPontuacoes"), {
-      type: "bar",
-      data: {
-        labels: [
-          "Maior Pontuação:\n'História do Autor'",
-          "Maior Pontuação:\n'Sobre o Batismo'",
-          "Maior Tempo\nSobre o Autor",
-          "Menor Tempo\nSobre o Autor",
-          "Maior Tempo\nSobre o Batismo",
-          "Menor Tempo\nSobre o Batismo",
-        ],
-        datasets: [
-          {
-            data: [9, 8, 4, 8, 2, 3],
-            backgroundColor: [
-              "green",
-              "blue",
-              "red",
-              "green",
-              "blue",
-              "red",
-            ],
-            borderColor: ["#ffffff", "#ffffff", "#ffffff", "#ffffff"],
-            borderWidth: 2,
-            borderRadius: 4,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: false },
-        },
-        scales: {
-          x: {
-            ticks: {
-              color: "#ffff",
-              font: { size: 10.2 },
+    function carregarDashboard() {
+      let idUsuario = sessionStorage.ID_USUARIO;
+
+      fetch(`/dashboard/dados/${idUsuario}`)
+        .then(function (resposta) {
+          if (resposta.ok) {
+            return resposta.json();
+          } else {
+            throw "Nenhum dado encontrado para este usuário.";
+          }
+        })
+        .then(function (dados) {
+          console.log("Dados da dashboard recebidos:", dados);
+
+          if (dados.maior_pontuacao_autor != null) {
+            document.getElementById("kpi-pontuacao-autor").innerHTML =
+              dados.maior_pontuacao_autor + "/10";
+          } else {
+            document.getElementById("kpi-pontuacao-autor").innerHTML =
+              "Sem tentativas";
+          }
+
+          if (dados.menor_pontuacao_autor != null) {
+            document.getElementById("kpi-menor-pontuacao-autor").innerHTML = dados.menor_pontuacao_autor + "/10";
+          }
+          else{
+            document.getElementById("kpi-menor-pontuacao-autor").innerHTML = "Sem tentativas";
+          }
+
+          if(dados.maior_pontuacao_batismo != null){
+            document.getElementById("kpi-pontuacao-batismo").innerHTML = dados.maior_pontuacao_batismo + "/10";
+          }
+          else{
+            document.getElementById("kpi-pontuacao-batismo").innerHTML = "Sem tentativas";
+          }
+
+          if(dados.menor_pontuacao_batismo != null){
+            document.getElementById("kpi-menor-pontuacao-batismo").innerHTML = dados.menor_pontuacao_batismo + "/10";
+          }
+          else{
+            document.getElementById("kpi-menor-pontuacao-batismo").innerHTML = "Sem tentativas"
+          }
+          plotarGrafico(dados);
+        })
+        .catch(function (erro) {
+          console.log("Erro ao carregar dashboard:", erro);
+        });
+    }
+
+    function plotarGrafico(dados) {
+      new Chart(document.getElementById("graficoPontuacoes"), {
+        type: "bar",
+        data: {
+          labels: [
+            "Maior Pontuação\n'História do Autor'",
+            "Menor Pontuação\n'História do Autor'",
+            "Maior Pontuação\n'Sobre o Batismo'",
+            "Menor Pontuação\n'Sobre o Batismo'",
+          ],
+          datasets: [
+            {
+              data: [
+                dados.maior_pontuacao_autor || 0,
+                dados.menor_pontuacao_autor || 0,
+                dados.maior_pontuacao_batismo || 0,
+                dados.menor_pontuacao_batismo || 0,
+              ],
+              backgroundColor: ["blue", "yellow", "green", "red"],
+              borderColor: ["#ffffff", "#ffffff", "#ffffff", "#ffffff"],
+              borderWidth: 2,
+              borderRadius: 4,
             },
-            grid: { color: "rgba(255,255,255,0.05)" },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
           },
-          y: {
-            ticks: { color: "#aaaaaa" },
-            grid: { color: "rgba(255,255,255,0.05)" },
-            beginAtZero: true,
+          scales: {
+            x: {
+              ticks: {
+                color: "#ffff",
+                font: { size: 13 },
+              },
+              grid: { color: "rgba(255,255,255,0.05)" },
+            },
+            y: {
+              ticks: { color: "#aaaaaa" },
+              grid: { color: "rgba(255,255,255,0.05)" },
+              beginAtZero: true,
+              max: 10,
+            },
           },
         },
-      },
-    });
+      });
+    }
   </script>
 </html>

@@ -17,8 +17,9 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var tentativaRouter = require("./src/routes/tentativas");
+let tentativaRouter = require("./src/routes/tentativas");
 let editarRouter = require("./src/routes/editar")
+let dashboardRouter = require("./src/routes/dashboard");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,6 +31,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/tentativas", tentativaRouter);
 app.use("/editar", editarRouter);
+app.use("/dashboard", dashboardRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
