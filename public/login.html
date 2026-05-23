@@ -118,6 +118,15 @@
               sessionStorage.NOME_USUARIO =  json.nome;
               sessionStorage.EMAIL_USUARIO = json.email;
               sessionStorage.ID_USUARIO    = json.id;
+
+              fetch("/loguser/registrar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                fk_usuarioServer: json.id
+                
+                })
+            });
               
             })
             mensagem_erro.innerHTML =

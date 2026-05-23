@@ -34,3 +34,15 @@ ADD COLUMN tempo_segundos INT NOT NULL;
 
 SELECT * FROM tentativa;
 
+CREATE TABLE loguser (
+id INT AUTO_INCREMENT PRIMARY KEY,
+fk_usuario INT NOT NULL,
+data_hora DATETIME DEFAULT NOW(),
+FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+);
+
+SELECT * FROM loguser;
+
+
+	
+
