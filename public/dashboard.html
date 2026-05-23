@@ -71,7 +71,7 @@
         </div>
 
         <div class="grafico">
-          <div style="width: 90%">
+          <div style="width: 90%;">
             <canvas id="graficoPontuacoes"></canvas>
           </div>
         </div>
@@ -122,7 +122,9 @@
           else{
             document.getElementById("kpi-menor-pontuacao-batismo").innerHTML = "Sem tentativas"
           }
+
           plotarGrafico(dados);
+
         })
         .catch(function (erro) {
           console.log("Erro ao carregar dashboard:", erro);
