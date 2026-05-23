@@ -81,9 +81,9 @@
 
   <script>
     function carregarDashboard() {
-      let idUsuario = sessionStorage.ID_USUARIO;
+      let fk_usuario = sessionStorage.ID_USUARIO;
 
-      fetch(`/dashboard/dados/${idUsuario}`)
+      fetch(`/dashboard/dados/${fk_usuario}`)
         .then(function (resposta) {
           if (resposta.ok) {
             return resposta.json();
